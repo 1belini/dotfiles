@@ -141,4 +141,3 @@ default_floating_border pixel 1
 
 exec_always feh --bg-fill ~/Pictures/xyz.png
 
-#exec_always ~/.config/polybar/launch.sh --blocks
