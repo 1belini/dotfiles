@@ -116,12 +116,29 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 
+
+bar{
+    status_command i3blocks
+    position top
+    colors{
+      background #181818
+      statusline #ffffff
+      separator #555555
+      focused_workspace #333333 #333333 #ffffff
+      active_workspace #333333 #333333 #ffffff
+      inactive_workspace #181818 #181818 #ffffff
+      urgent_workspace #2f343f #ebcb8b #2f343f
+    }
+}
+
+
+
 bindsym $mod+r mode "resize"
 gaps inner 5
 
 default_border pixel 1
 default_floating_border pixel 1
 
-exec_always feh --bg-fill ~/Images/essa.png
+exec_always feh --bg-fill ~/Pictures/xyz.png
 
-exec_always ~/.config/polybar/launch.sh --blocks
+#exec_always ~/.config/polybar/launch.sh --blocks
