@@ -1,4 +1,4 @@
-syntax on
+syntax on 
 filetype on
 filetype plugin on
 filetype indent on
@@ -9,7 +9,7 @@ set tabstop=4
 set expandtab
 set nobackup
 set scrolloff=10
-set wrap 
+set wrap
 set incsearch
 set ignorecase
 set smartcase
@@ -40,9 +40,21 @@ Plugin 'morhetz/gruvbox'
 Plugin 'preservim/nerdtree'
 Plugin 'unkiwii/vim-nerdtree-sync'
 Plugin 'vimsence/vimsence'
+Plugin 'kyoz/purify', { 'rtp': 'vim' }
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'rust-lang/rust.vim'
 call vundle#end()
 
-colorscheme gruvbox
+call plug#begin()
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+call plug#end()
+
+colorscheme purify
 set bg=dark
 
 map <silent> <C-n> :NERDTreeFocus<CR>
+
+
+
+
