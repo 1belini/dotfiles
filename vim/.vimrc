@@ -32,10 +32,13 @@ set nu
 set updatetime=50
 set shortmess+=c
 set rtp+=~/.vim/bundle/Vundle.vim
+set noshowmode
+
+
+
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
-Plugin 'vim-airline/vim-airline'
 Plugin 'morhetz/gruvbox'
 Plugin 'preservim/nerdtree'
 Plugin 'unkiwii/vim-nerdtree-sync'
@@ -44,17 +47,26 @@ Plugin 'kyoz/purify', { 'rtp': 'vim' }
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'rust-lang/rust.vim'
+Plugin 'itchyny/lightline.vim'
 call vundle#end()
 
 call plug#begin()
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
+set laststatus=2
 colorscheme purify
 set bg=dark
 
 map <silent> <C-n> :NERDTreeFocus<CR>
 
-
-
-
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead'
+      \ },
+      \ }
