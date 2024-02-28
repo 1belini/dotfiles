@@ -1,0 +1,95 @@
+syntax on 
+filetype on
+filetype plugin on
+filetype indent on
+set nocompatible
+set number
+set shiftwidth=4
+set tabstop=4
+set expandtab
+set nobackup
+set scrolloff=10
+set wrap
+set incsearch
+set ignorecase
+set smartcase
+set showcmd
+set showmode
+set showmatch
+set hlsearch
+set history=1000
+set wildmenu
+set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.exe,*.flv,*.img,*.xlsx
+set mouse=a
+set guicursor=
+set noerrorbells
+set tabstop=2 softtabstop=2
+set expandtab
+set smartindent
+set noswapfile
+set undofile
+set nu
+set updatetime=50
+set shortmess+=c
+set rtp+=~/.vim/bundle/Vundle.vim
+set noshowmode
+set backspace=indent,eol,start
+let python_highlight_all = 1 
+let g:jedi#auto_initialization = 1
+
+
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'morhetz/gruvbox'
+Plugin 'preservim/nerdtree'
+Plugin 'unkiwii/vim-nerdtree-sync'
+Plugin 'kyoz/purify', { 'rtp': 'vim' }
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'itchyny/lightline.vim'
+call vundle#end()
+
+call plug#begin()
+Plug 'vimsence/vimsence'
+call plug#end()
+
+set laststatus=2
+colorscheme purify
+set bg=dark
+
+map <silent> <C-l> :NERDTreeFocus<CR>
+
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead'
+      \ },
+      \ }
+
+" prerequisite tags
+set nocp
+filetype plugin on
+" configure tags - add additional tags here or comment out not-used ones
+set tags+=~/.vim/tags/stl
+set tags+=~/.vim/tags/gl
+set tags+=~/.vim/tags/sdl
+set tags+=~/.vim/tags/qt4
+" build tags of your own project with CTRL+F12
+noremap <F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<cr>
+inoremap <F12> <Esc>:!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<cr>
+" OmniCppComplete
+let OmniCpp_NamespaceSearch = 1
+let OmniCpp_GlobalScopeSearch = 1
+let OmniCpp_ShowAccess = 1
+let OmniCpp_MayCompleteDot = 1
+let OmniCpp_MayCompleteArrow = 1
+let OmniCpp_MayCompleteScope = 1
+let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
+" automatically open and close the popup menu / preview window
+au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+set completeopt=menuone,menu,longest,preview
